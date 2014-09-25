@@ -79,7 +79,7 @@ class TransformIP(SONManipulator):
 		# If no _type found in the record, watch its val recursively.
 		for (key, val) in son.items():
 			if isinstance(val, dict):
-				if "_type" in val and val["_type"] in ('IPAddress', 'IPNetwork'):
+				if '_type' in val and val['_type'] in ('IPAddress', 'IPNetwork'):
 					son[key] = decode_ipaddress(val)
 				else:
 					son[key] = self.transform_outgoing(val, coll)
