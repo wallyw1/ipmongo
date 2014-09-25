@@ -31,3 +31,9 @@ You can also download and run test.py to play with it.
 ## Licence of ipmongo
 
 ipmongo is an MIT-licensed Python module.
+
+## Change log
+
+### 2014-09-25: 0.1.0
+
+*   First release
