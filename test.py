@@ -1,4 +1,4 @@
-#!/bin/usr/env python
+#!/usr/bin/env python
 
 # Imports necessary for using ipmongo
 from pymongo.son_manipulator import SONManipulator
