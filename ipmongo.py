@@ -2,7 +2,15 @@
 
 """
 
-Please refer to LICENSE file for licence information.
+ipmongo
+
+Author: wal1ybot <https://github.com/wal1ybot/ipmongo>
+
+Please refer to readme for details.
+<https://github.com/wal1ybot/ipmongo/blob/master/README.md>
+
+Please refer to the following LICENSE file for licence information.
+<https://github.com/wal1ybot/ipmongo/blob/master/LICENSE>
 
 """
 
