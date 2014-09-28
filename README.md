@@ -14,10 +14,10 @@ If you want to use ipaddr object without manual conversion of the object when in
 ## How to use ipmongo
 
 *   In pymongo, it supports adding 'custom type': <http://api.mongodb.org/python/current/examples/custom_type.html>
-*   ipmongo handles the logic of 'encoding' and 'decoding' for you. All you need to do is to add the `TransformIP()` class in ipmongo to db instance created from pymongo.
+*   Based on 'custom type', ipmongo handles the logic of 'encoding' and 'decoding' for you. All you need to do is to add the `TransformIP()` class of ipmongo to database instance created from pymongo.
 *   **IMPORTANT**:
     *   Since mutable variables are passed as reference (pointer) to any method, transformation operations in ipmongo will modify ORIGINAL content of any variable to be inserted/updated into MongoDB.
-    *   To avoid any variable being modified by ipmongo, pass a copy of the variable, e.g. by calling dict() method.
+    *   To avoid any variable being modified by ipmongo, pass a copy of the variable, e.g. by calling `dict()` method.
 *   Please refer to test.py for details: <https://github.com/wal1ybot/ipmongo/blob/master/test.py>
 *   You can also download and run test.py to play with it.
 
@@ -37,7 +37,7 @@ ipmongo is an MIT-licensed Python module.
 ### 2014-09-28: 0.1.1
 
 *   Fixed hashbang in test.py, single quote consistency in ipmongo.py. Contributed by [Jimmy Wong](https://github.com/wyuenho).
-*   Address the issue of the content of variable processed by ipmongo will be modified. Please refer to test.py for details.
+*   Address the issue of the content of the variable processed being modified by ipmongo. Please refer to test.py for details.
 
 ### 2014-09-25: 0.1.0
 
