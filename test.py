@@ -37,12 +37,23 @@ if __name__ == '__main__':
 
 	# Insert data (assume collection name is 'test_collection')
 	#
-	# -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+	# -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+	#
 	# IMPORTANT:
+	#
 	# Since mutable variables are passed as reference (pointer) to any method,
-	# transformation operations in ipmongo will modify ORIGINAL content of doc.
-	# To avoid doc modified by ipmongo, pass a copy of doc by calling dict(doc).
-	# -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+	# transformation operations in ipmongo will alter ORIGINAL content of doc.
+	#
+	# To avoid your mutable variable being altered, note the following scenarios:
+	#
+	# 1. Variable NOT containing mutable values, e.g. doc = {'ip': IPAddress('8.8.8.8')},
+	#    then can simply, pass a copy of doc by calling dict(doc).
+	# 2. Variable containing mutable values, e.g. doc = {'ip_list': [IPAddress('8.8.8.8'),
+	#    IPAddress('2001:4860:4860::8888')]},
+	#    then you may need copy.deepcopy(doc) to ensure ALL mutable attributes are cloned.
+	#    Reference: <https://docs.python.org/2/library/copy.html>
+	# 
+	# -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 
 	print 'Insert doc into MongoDB...'
 	for doc in docs:
