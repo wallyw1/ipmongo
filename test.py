@@ -32,11 +32,22 @@ if __name__ == '__main__':
 		IPNetwork('2001:4860::/32'),
 	]
 
+	# Create doc dicts for insert later
+	docs = [{"desc": 'This is {}'.format(ipaddr_obj), "ip": ipaddr_obj} for ipaddr_obj in ipaddr_objs]
+
 	# Insert data (assume collection name is 'test_collection')
+	#
+	# -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+	# IMPORTANT:
+	# Since mutable variables are passed as reference (pointer) to any method,
+	# transformation operations in ipmongo will modify ORIGINAL content of doc.
+	# To avoid doc modified by ipmongo, pass a copy of doc by calling dict(doc).
+	# -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+
 	print 'Insert doc into MongoDB...'
-	for ipaddr_obj in ipaddr_objs:
-		print 'Inserting {}...'.format(ipaddr_obj)
-		db.test_collection.insert({"desc": 'This is {}'.format(ipaddr_obj), "ip": ipaddr_obj})
+	for doc in docs:
+		db.test_collection.insert(dict(doc))  # IMPORTANT - see remark above
+		print 'Inserted {}...'.format(doc)
 
 	# Select data
 	print '\nSelect doc from MongoDB...'
