@@ -19,6 +19,8 @@ from ipaddr import IPAddress, IPNetwork
 from ipaddr import IPv4Address, IPv4Network
 from ipaddr import IPv6Address, IPv6Network
 
+import copy
+
 def encode_ipaddress(ip):
 
 	# Determine _type (IPAddress or IPNetwork) for describing the data in MongoDB.
@@ -44,7 +46,13 @@ def decode_ipaddress(doc):
 		return IPNetwork(doc['ip'])
 
 class TransformIP(SONManipulator):
-	def transform_incoming(self, son, coll):
+	def transform_incoming(self, val, coll):
+
+		# Since mutable value is passed by reference (pointer),
+		# the method can alter the content of the value passed.
+		# To avoid altering the value passed,
+		# make a copy of the value by copy.deepcopy() method.
+		son = copy.deepcopy(val)
 
 		# Determine type of son to get (key, val) iter_items.
 		if isinstance(son, (list, set)):

@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
 	name='ipmongo',
-	version='0.1.1',
+	version='0.1.2',
 	description='Provide conversion of ipaddr object for MongoDB',
 	long_description='Convert ipaddr object before inserting it into MongoDB; convert the data selected from MongoDB back to ipaddr object',
 	url='https://github.com/wal1ybot/ipmongo',

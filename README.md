@@ -15,9 +15,6 @@ If you want to use ipaddr object without manual conversion of the object when in
 
 *   In pymongo, it supports adding 'custom type': <http://api.mongodb.org/python/current/examples/custom_type.html>
 *   Based on 'custom type', ipmongo handles the logic of 'encoding' and 'decoding' for you. All you need to do is to add the `TransformIP()` class of ipmongo to database instance created from pymongo.
-*   **IMPORTANT**:
-    *   Since mutable variables are passed as reference (pointer) to any method, transformation operations in ipmongo will alter ORIGINAL content of any variable to be inserted/updated into MongoDB.
-    *   To avoid any variable being altered by ipmongo, pass a copy of the variable, e.g. by calling `dict()` or `copy.deepcopy()` method.
 *   Please refer to test.py for details: <https://github.com/wal1ybot/ipmongo/blob/master/test.py>
 *   You can also download and run test.py to play with it.
 
@@ -33,6 +30,10 @@ If you want to use ipaddr object without manual conversion of the object when in
 ipmongo is an MIT-licensed Python module.
 
 ## Change log
+
+### 2014-08-29: 0.1.2
+
+*   The issue of altering variable processed by ipmongo is not handled by the module. No extra processing is needed by the caller.
 
 ### 2014-09-28: 0.1.1
 
