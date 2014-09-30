@@ -55,7 +55,10 @@ class TransformIP(SONManipulator):
 		son = copy.deepcopy(val)
 
 		# Determine type of son to get (key, val) iter_items.
-		if isinstance(son, (list, set)):
+		if isinstance(son, list):
+			iter_items = enumerate(son)
+		elif isinstance(son, set):
+			son = list(son)  # convert to list as set cannot save dict returned by encode_ipaddress()
 			iter_items = enumerate(son)
 		elif isinstance(son, dict):
 			iter_items = son.items()

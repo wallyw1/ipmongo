@@ -25,12 +25,12 @@ if __name__ == '__main__':
 	db.add_son_manipulator(TransformIP())
 
 	# List of ipaddr objs for insert
-	ipaddr_objs = [
+	ipaddr_objs = set([
 		IPAddress('8.8.8.8'),
 		IPNetwork('8.8.8.0/24'),
 		IPAddress('2001:4860:4860::8888'),
 		IPNetwork('2001:4860::/32'),
-	]
+	])
 
 	# Create doc dicts for insert later
 	docs = [{"desc": 'This is {}'.format(ipaddr_obj), "ip": ipaddr_obj} for ipaddr_obj in ipaddr_objs]

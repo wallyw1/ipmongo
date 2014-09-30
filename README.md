@@ -32,7 +32,11 @@ ipmongo is an MIT-licensed Python module.
 
 ## Change log
 
-### 2014-08-29: 0.1.2
+### 2014-09-30: 0.1.3
+
+*   Fixed #3: exception thrown when handling set type value
+
+### 2014-09-29: 0.1.2
 
 *   The issue of altering variable processed by ipmongo is now handled by the module. No extra processing is needed by the caller.
 
